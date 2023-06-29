@@ -1,44 +1,48 @@
-// Store the valid username and password
-const validUsername = "admin";
-const validPassword = "password";
+// Store the snippets in an array
+let snippets = [];
 
-// DOM elements
-const loginForm = document.getElementById("login-form");
-const snippetForm = document.getElementById("snippet-form");
-const snippetList = document.getElementById("snippets");
-const snippetContainer = document.getElementById("snippet-container");
-
-// Add event listener to the login form
-loginForm.addEventListener("submit", function(event) {
-  event.preventDefault();
-  
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
-  
-  // Check if the entered username and password match the valid ones
-  if (username === validUsername && password === validPassword) {
-    // Show the snippet container and hide the login form
-    loginForm.style.display = "none";
-    snippetContainer.style.display = "block";
-  } else {
-    alert("Invalid username or password. Please try again.");
+// Check if the user is logged in
+function checkLoggedIn() {
+  const loggedIn = localStorage.getItem('loggedIn');
+  if (loggedIn === 'true') {
+    document.getElementById('login').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+    displaySnippets();
   }
-});
+}
 
-// Add event listener to the snippet form
-snippetForm.addEventListener("submit", function(event) {
-  event.preventDefault();
-  
-  const snippetText = document.getElementById("snippet-text").value;
-  
-  // Create a new list item for the snippet
-  const snippetItem = document.createElement("li");
-  snippetItem.classList.add("snippet-item");
-  snippetItem.textContent = snippetText;
-  
-  // Append the snippet to the list
-  snippetList.appendChild(snippetItem);
-  
-  // Clear the snippet input field
-  document.getElementById("snippet-text").value = "";
-});
+// Login function
+function login() {
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+
+  // Check if the username and password are correct (dummy values for demonstration)
+  if (username === 'azy' && password === 'coems123') {
+    localStorage.setItem('loggedIn', 'true');
+    checkLoggedIn();
+  } else {
+    alert('Invalid username or password.');
+  }
+}
+
+// Add a snippet to the array and display all snippets
+function addSnippet() {
+  const snippet = document.getElementById('snippet').value;
+  snippets.push(snippet);
+  displaySnippets();
+}
+
+// Display all snippets
+function displaySnippets() {
+  const snippetsDiv = document.getElementById('snippets');
+  snippetsDiv.innerHTML = '';
+
+  snippets.forEach((snippet, index) => {
+    const snippetDiv = document.createElement('div');
+    snippetDiv.textContent = `Snippet ${index + 1}: ${snippet}`;
+    snippetsDiv.appendChild(snippetDiv);
+  });
+}
+
+// Check login status on page load
+checkLoggedIn();
