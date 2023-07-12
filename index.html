@@ -4,12 +4,28 @@
   <title>Snippet Sharing Website</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
+
+<script>
+  function login() {
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+
+  // Check if the username and password are correct (dummy values for demonstration)
+  if (password === 'coems123') {
+    localStorage.setItem('loggedIn', 'true');
+    checkLoggedIn();
+  } else {
+    alert('Invalid username or password.');
+  }
+}
+</script>
+
 <body>
   <div id="login">
     <h2>Login</h2>
     <input type="text" id="username" placeholder="Username"><br>
     <input type="password" id="password" placeholder="Password"><br>
-    <button>Login</button>
+    <button onclick="login()" id="BtnLogin">Login</button>
   </div>
 
   <div id="content" style="display: none;">
