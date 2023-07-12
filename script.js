@@ -26,6 +26,7 @@ function login() {
 }
 
 document.getElementById("BtnLogin").addEventListener("click",function(){
+  console.log("Logged in!")
   login();
 })
 
