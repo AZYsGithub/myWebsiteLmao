@@ -25,6 +25,10 @@ function login() {
   }
 }
 
+document.getElementById("BtnLogin").addEventListener("click",function(){
+  login();
+})
+
 // Add a snippet to the array and display all snippets
 function addSnippet() {
   const snippet = document.getElementById('snippet').value;
