@@ -17,7 +17,7 @@ function login() {
   const password = document.getElementById('password').value;
 
   // Check if the username and password are correct (dummy values for demonstration)
-  if (username === 'azy' && password === 'coems123') {
+  if (password === 'coems123') {
     localStorage.setItem('loggedIn', 'true');
     checkLoggedIn();
   } else {
