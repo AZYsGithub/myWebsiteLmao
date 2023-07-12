@@ -15,7 +15,16 @@
   }
 }
 
+function displaySnippets() {
+  const snippetsDiv = document.getElementById('snippets');
+  snippetsDiv.innerHTML = '';
 
+  snippets.forEach((snippet, index) => {
+    const snippetDiv = document.createElement('div');
+    snippetDiv.textContent = `Snippet ${index + 1}: ${snippet}`;
+    snippetsDiv.appendChild(snippetDiv);
+  });
+}
 
 
   function login() {
@@ -30,6 +39,14 @@
   } else {
     alert('Invalid username or password.');
   }
+
+
+
+  function addSnippet() {
+  const snippet = document.getElementById('snippet').value;
+  snippets.push(snippet);
+  displaySnippets();
+}
 }
 </script>
 
@@ -44,6 +61,6 @@
   <div id="content" style="display: none;">
     <h2>Post Snippet</h2>
     <textarea id="snippet" placeholder="Enter your snippet code here"></textarea><br>
-    <button>Add Snippet</button>
+    <button onclick="addSnippet()">Add Snippet</button>
 
     <h2>Shared Snippets</h2>
